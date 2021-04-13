@@ -82,14 +82,15 @@ namespace Video_Player_Remake.Models
             {
                 _playerPositionSpan = value;
                 OnPropertyChanged(nameof(PositionTimeSpan));
+                OnPropertyChanged(nameof(PositionDouble));
             }
         }
         public double PositionDouble
         {
-            get => _playerPositionDouble;
+            get => PositionTimeSpan.TotalSeconds;
             set {
-                _playerPositionDouble = value;
-                mediaElement.Position = new TimeSpan(0, 0, Convert.ToInt32(value));
+                mediaElement.Position = TimeSpan.FromSeconds(Convert.ToInt32(value));
+                PositionTimeSpan = TimeSpan.FromSeconds(Convert.ToInt32(value));
                 OnPropertyChanged(nameof(PositionDouble));
             }
         }
@@ -99,7 +100,6 @@ namespace Video_Player_Remake.Models
             {
                 mediaElement.Stop();
                 eventTimer.Stop();
-                mediaElement.Position = ZeroSpan;
                 isPlaying = false;
             }
             catch (Exception e) { throw (e); }
@@ -157,10 +157,10 @@ namespace Video_Player_Remake.Models
             {
                 try
                 {
+                    isPlaying = false;
                     var uri = new Uri(openFileDialog.FileName);
                     FileName = openFileDialog.SafeFileName;
                     mediaElement.Source = uri;
-                    isPlaying = false;
                     Play();
                 }
                 catch (Exception e) {
