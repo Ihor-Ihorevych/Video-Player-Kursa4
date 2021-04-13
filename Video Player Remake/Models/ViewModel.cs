@@ -8,26 +8,27 @@ namespace Video_Player_Remake
     {
         public ViewModel(MediaElement mediaElement)
         {
-            _player = new Models.Model(mediaElement)
+            _player = new Model(mediaElement)
             {
                 Volume = 15,
                 FileName = "No file"
             };
         }
-
-        private Models.Model _player { get; set; }
-        public Models.Model Player
+        #region Player
+        private Model _player { get; set; }
+        public Model Player
         {
             get => _player;
         }
-        
+        #endregion
+        #region Commands
         private Commands.RelayCommand stop;
         public Commands.RelayCommand Stop
         {
             get
             {
                 return stop ?? (stop = new Commands.RelayCommand(player => {
-                    (player as Models.Model).Stop(); 
+                    (player as Model).Stop(); 
                 }, (player) => Player.isPlaying));
             }
         }
@@ -37,8 +38,7 @@ namespace Video_Player_Remake
             get
             {
                 return play ?? (play = new Commands.RelayCommand(player => {
-                    var pl = player as Models.Model;
-                    (player as Models.Model).Play();
+                    (player as Model).Play();
                 }, (player) => !Player.isPlaying ));
             }
         }
@@ -48,7 +48,7 @@ namespace Video_Player_Remake
             get
             {
                 return pause ?? (pause = new Commands.RelayCommand(player => {
-                    (player as Models.Model).Pause();
+                    (player as Model).Pause();
                 }, (player) => Player.isPlaying));
             }
         }
@@ -59,11 +59,12 @@ namespace Video_Player_Remake
             get
             {
                 return openFile ?? (openFile = new Commands.RelayCommand(player => {
-                    (player as Models.Model).OpenFile();
+                    (player as Model).OpenFile();
                 }));
             }
         }
-        
+        #endregion
+        #region INotify
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
@@ -71,5 +72,6 @@ namespace Video_Player_Remake
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             } 
         }
+        #endregion
     }
 }

@@ -7,10 +7,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-namespace Video_Player_Remake.Models
+namespace Video_Player_Remake
 {
     class Model : INotifyPropertyChanged
     {
+        #region Fields
         private MediaElement mediaElement;
         private string _fileName;
         private double _volume, _maxLenght;
@@ -18,6 +19,7 @@ namespace Video_Player_Remake.Models
         private TimeSpan _playerPositionSpan;
         private Timer eventTimer;
         public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
         public Model(MediaElement e)
         {
             try
@@ -38,6 +40,7 @@ namespace Video_Player_Remake.Models
             }
             catch (Exception er) { throw (er); }
         }
+        #region Properties
         public string FileName
         {
             get => _fileName;
@@ -100,6 +103,8 @@ namespace Video_Player_Remake.Models
                 OnPropertyChanged(nameof(PositionDouble));
             }
         }
+        #endregion
+        #region Methods
         public void Stop()
         {
             try
@@ -184,6 +189,7 @@ namespace Video_Player_Remake.Models
       
         public void OnPropertyChanged([CallerMemberName] string prop = "") {
             if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }   
+        }
+        #endregion
     }
 }
