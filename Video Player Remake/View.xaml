@@ -13,9 +13,9 @@
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <DockPanel Height="Auto" Margin="0" Background="White" Grid.Row="0" Grid.RowSpan="2">
-            <Button Foreground="White" Content="Open file" Command="{Binding OpenFile}" CommandParameter="{Binding Player}" HorizontalAlignment="Left" BorderThickness="0" Margin="7" Background="RoyalBlue" Width="Auto" Height="Auto"/>
-        </DockPanel>
+        <ToolBar HorizontalAlignment="Stretch" Background="White" Grid.Row="0" Grid.RowSpan="2">
+            <Button Foreground="White" Content="Open file" Command="{Binding OpenFile}" CommandParameter="{Binding Player}" VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="0" Background="RoyalBlue" Width="Auto" Height="Auto"/>
+        </ToolBar>
         <MediaElement x:Name="medieElement" Height="Auto" Grid.Row="2" />
         <DockPanel Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.Row="3">
             <DockPanel.Resources>
