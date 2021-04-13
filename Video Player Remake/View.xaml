@@ -8,18 +8,50 @@
         Title="{Binding Player.FileName}" Height="450" Width="800">
     <Grid Background="Black">
         <Grid.RowDefinitions>
-            <RowDefinition Height="8"/>
-            <RowDefinition Height="19"/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ToolBar HorizontalAlignment="Stretch" Background="White" Grid.Row="0" Grid.RowSpan="2">
-            <Button Foreground="White" Content="Open file" Command="{Binding OpenFile}" CommandParameter="{Binding Player}" VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="0" Background="RoyalBlue" Width="Auto" Height="Auto"/>
-            <ToggleButton Width="Auto" Height="Auto" Margin="15,0" Foreground="White" Background="RoyalBlue" HorizontalAlignment="Right" IsChecked="{Binding Player.Repeat}" Content="Repeat"/>
+        <ToolBar HorizontalAlignment="Stretch" Background="White" Grid.Row="0">
+            <Button Command="{Binding OpenFile}" CommandParameter="{Binding Player}">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Background" Value="RoyalBlue"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                        <Setter Property="Height" Value="Auto"/>
+                        <Setter Property="Width" Value="Auto"/>
+                    </Style>
+                </Button.Style>
+                Open file
+            </Button>
+            <ToggleButton IsChecked="{Binding Player.Repeat}">
+                <ToggleButton.Style>
+                    <Style TargetType="{x:Type ToggleButton}">
+                        <Setter Property="Background" Value="RoyalBlue"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Margin" Value="3, 0"/>
+                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background" Value="Green"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ToggleButton.Style>
+                Repeat
+            </ToggleButton>
         </ToolBar>
-        <MediaElement x:Name="medieElement" Height="Auto" Grid.Row="2" />
-        <DockPanel Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.Row="3">
+        <MediaElement x:Name="medieElement" Height="Auto" Grid.Row="1" />
+        <DockPanel>
             <DockPanel.Resources>
+                <Style TargetType="{x:Type DockPanel}">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalAlignment" Value="Bottom"/>
+                    <Setter Property="Grid.Row" Value="2"/>
+                </Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Margin" Value="7"/>
                     <Setter Property="Background" Value="RoyalBlue"/>
@@ -37,14 +69,16 @@
                     <Setter Property="Margin" Value="5"/>
                     <Setter Property="Width" Value="50"/>
                     <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Height" Value="Auto"/>
+                    <Setter Property="Width" Value="Auto"/>
                 </Style>
             </DockPanel.Resources>
             <Button Command="{Binding Play}" CommandParameter="{Binding Player}" Content="Play"/>
             <Button Command="{Binding Pause}" CommandParameter="{Binding Player}" Content="Pause"/>
             <Button Command="{Binding Stop}" CommandParameter="{Binding Player}" Content="Stop"/>
-            <Label Content="{Binding Player.Volume}" Width="Auto" Height="Auto"/>
+            <Label Content="{Binding Player.Volume}"/>
             <Slider Minimum="1" Maximum="100" Width="100" Value="{Binding Player.Volume, Mode=TwoWay}"/>
-            <Label Content="{Binding Player.PositionTimeSpan}" Width="Auto" Height="Auto"/>
+            <Label Content="{Binding Player.PositionTimeSpan}"/>
             <Slider Minimum="1" Maximum="{Binding Player.MaxLen}" Value="{Binding Player.PositionDouble}" IsEnabled="{Binding Player.isPlaying}"/>
         </DockPanel>
     </Grid>
