@@ -8,11 +8,11 @@ namespace Video_Player_Remake
     {
         public ViewModel(MediaElement mediaElement)
         {
-            _player = new Models.PlayerModel(mediaElement);
+            _player = new Models.Model(mediaElement);
         }
 
-        private Models.PlayerModel _player { get; set; }
-        public Models.PlayerModel Player
+        private Models.Model _player { get; set; }
+        public Models.Model Player
         {
             get => _player;
         }
@@ -23,7 +23,7 @@ namespace Video_Player_Remake
             get
             {
                 return stop ?? (stop = new Commands.RelayCommand(player => {
-                    (player as Models.PlayerModel).Stop(); 
+                    (player as Models.Model).Stop(); 
                 }, (player) => Player.isPlaying));
             }
         }
@@ -33,8 +33,8 @@ namespace Video_Player_Remake
             get
             {
                 return play ?? (play = new Commands.RelayCommand(player => {
-                    var pl = player as Models.PlayerModel;
-                    (player as Models.PlayerModel).Play();
+                    var pl = player as Models.Model;
+                    (player as Models.Model).Play();
                 }, (player) => !Player.isPlaying ));
             }
         }
@@ -44,7 +44,7 @@ namespace Video_Player_Remake
             get
             {
                 return pause ?? (pause = new Commands.RelayCommand(player => {
-                    (player as Models.PlayerModel).Pause();
+                    (player as Models.Model).Pause();
                 }, (player) => Player.isPlaying));
             }
         }
@@ -55,7 +55,7 @@ namespace Video_Player_Remake
             get
             {
                 return openFile ?? (openFile = new Commands.RelayCommand(player => {
-                    (player as Models.PlayerModel).OpenFile();
+                    (player as Models.Model).OpenFile();
                 }));
             }
         }

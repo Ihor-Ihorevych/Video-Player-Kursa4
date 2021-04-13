@@ -9,7 +9,7 @@ using System.Windows.Threading;
 
 namespace Video_Player_Remake.Models
 {
-    class PlayerModel : INotifyPropertyChanged
+    class Model : INotifyPropertyChanged
     {
         private MediaElement mediaElement;
         private string _fileName = "No file";
@@ -21,7 +21,7 @@ namespace Video_Player_Remake.Models
         private TimeSpan ZeroSpan = new TimeSpan(0);
         private Timer eventTimer;
         public event PropertyChangedEventHandler PropertyChanged;
-        public PlayerModel(MediaElement e)
+        public Model(MediaElement e)
         {
             try
             {
@@ -99,6 +99,7 @@ namespace Video_Player_Remake.Models
             {
                 mediaElement.Stop();
                 eventTimer.Stop();
+                mediaElement.Position = ZeroSpan;
                 isPlaying = false;
             }
             catch (Exception e) { throw (e); }
@@ -170,10 +171,8 @@ namespace Video_Player_Remake.Models
         private void Max_Len(object source, EventArgs e) {
             if (mediaElement.NaturalDuration.HasTimeSpan) MaxLen = mediaElement.NaturalDuration.TimeSpan.TotalSeconds;
         }
-        private void Is_Playing(object source, EventArgs e) => isPlaying = true;
         private void Is_Not_Playing(object source, EventArgs e) {
-            isPlaying = false;
-            mediaElement.Position = ZeroSpan;
+            Stop();
         }
       
         public void OnPropertyChanged([CallerMemberName] string prop = "") {

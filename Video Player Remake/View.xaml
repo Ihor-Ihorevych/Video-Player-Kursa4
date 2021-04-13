@@ -6,21 +6,27 @@
         xmlns:local="clr-namespace:Video_Player_Remake"
         mc:Ignorable="d"
         Title="{Binding Player.FileName}" Height="450" Width="800">
-    <Grid>
+    <Grid Background="Black">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="19"/>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ToolBar Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-            <Button Content="Open media file" Command="{Binding OpenFile}" CommandParameter="{Binding Player}" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-        </ToolBar>
-        <MediaElement x:Name="medieElement" Height="Auto" Grid.Row="1" />
-        <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.Row="2">
+        <DockPanel Height="Auto" Margin="0" Background="White" Grid.Row="0" Grid.RowSpan="2">
+            <Button Foreground="White" Content="Open file" Command="{Binding OpenFile}" CommandParameter="{Binding Player}" HorizontalAlignment="Left" BorderThickness="0" Margin="7" Background="RoyalBlue" Width="Auto" Height="Auto"/>
+        </DockPanel>
+        <MediaElement x:Name="medieElement" Height="Auto" Grid.Row="2" />
+        <DockPanel Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.Row="3">
             <DockPanel.Resources>
                 <Style TargetType="{x:Type Button}">
-                    <Setter Property="Margin" Value="10"/>
-                    <Setter Property="Width" Value="Auto"/>
+                    <Setter Property="Margin" Value="7"/>
+                    <Setter Property="Background" Value="RoyalBlue"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="Width" Value="50"/>
+                    <Setter Property="Height" Value="25"/>
                 </Style>
                 <Style TargetType="{x:Type Slider}">
                     <Setter Property="Margin" Value="5"/>
@@ -28,6 +34,7 @@
                 </Style>
                 <Style TargetType="{x:Type Label}">
                     <Setter Property="Margin" Value="5"/>
+                    <Setter Property="Width" Value="50"/>
                     <Setter Property="VerticalAlignment" Value="Center"/>
                 </Style>
             </DockPanel.Resources>
@@ -37,8 +44,8 @@
             <Label Content="{Binding Player.Volume}" Width="Auto" Height="Auto"/>
             <Slider Minimum="1" Maximum="100" Width="100" Value="{Binding Player.Volume, Mode=TwoWay}"/>
             <Label Content="{Binding Player.PositionTimeSpan}" Width="Auto" Height="Auto"/>
-            <Slider Minimum="1" Maximum="{Binding Player.MaxLen}" Value="{Binding Player.PositionDouble}"/>
+            <Slider Minimum="1" Maximum="{Binding Player.MaxLen}" Value="{Binding Player.PositionDouble}" IsEnabled="{Binding Player.isPlaying}"/>
         </DockPanel>
     </Grid>
-   
+
 </Window>
