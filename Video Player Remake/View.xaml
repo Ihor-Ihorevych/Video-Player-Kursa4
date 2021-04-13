@@ -15,6 +15,7 @@
         </Grid.RowDefinitions>
         <ToolBar HorizontalAlignment="Stretch" Background="White" Grid.Row="0" Grid.RowSpan="2">
             <Button Foreground="White" Content="Open file" Command="{Binding OpenFile}" CommandParameter="{Binding Player}" VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="0" Background="RoyalBlue" Width="Auto" Height="Auto"/>
+            <ToggleButton Width="Auto" Height="Auto" Margin="15,0" Foreground="White" Background="RoyalBlue" HorizontalAlignment="Right" IsChecked="{Binding Player.Repeat}" Content="Repeat"/>
         </ToolBar>
         <MediaElement x:Name="medieElement" Height="Auto" Grid.Row="2" />
         <DockPanel Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.Row="3">

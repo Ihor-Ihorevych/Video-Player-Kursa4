@@ -13,12 +13,9 @@ namespace Video_Player_Remake.Models
     {
         private MediaElement mediaElement;
         private string _fileName;
-        private double _volume;
-        private double _maxLenght;
-        private double _playerPositionDouble;
-        private bool _isPlaying;
+        private double _volume, _maxLenght;
+        private bool _isPlaying, _repeat;
         private TimeSpan _playerPositionSpan;
-        private TimeSpan ZeroSpan = new TimeSpan(0);
         private Timer eventTimer;
         public event PropertyChangedEventHandler PropertyChanged;
         public Model(MediaElement e)
@@ -75,6 +72,15 @@ namespace Video_Player_Remake.Models
                 _isPlaying = value;
                 OnPropertyChanged(nameof(isPlaying));
             }
+        }
+        public bool Repeat
+        {
+            get => _repeat;
+            set
+            {
+                _repeat = value;
+                OnPropertyChanged(nameof(Repeat));
+            } 
         }
         public TimeSpan PositionTimeSpan {
             get => _playerPositionSpan;
@@ -173,6 +179,7 @@ namespace Video_Player_Remake.Models
         }
         private void Is_Not_Playing(object source, EventArgs e) {
             Stop();
+            if (Repeat) Play();
         }
       
         public void OnPropertyChanged([CallerMemberName] string prop = "") {
