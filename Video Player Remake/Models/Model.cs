@@ -12,8 +12,8 @@ namespace Video_Player_Remake.Models
     class Model : INotifyPropertyChanged
     {
         private MediaElement mediaElement;
-        private string _fileName = "No file";
-        private double _volume = 5;
+        private string _fileName;
+        private double _volume;
         private double _maxLenght;
         private double _playerPositionDouble;
         private bool _isPlaying;

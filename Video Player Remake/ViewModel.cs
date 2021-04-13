@@ -8,7 +8,11 @@ namespace Video_Player_Remake
     {
         public ViewModel(MediaElement mediaElement)
         {
-            _player = new Models.Model(mediaElement);
+            _player = new Models.Model(mediaElement)
+            {
+                Volume = 15,
+                FileName = "No file"
+            };
         }
 
         private Models.Model _player { get; set; }
