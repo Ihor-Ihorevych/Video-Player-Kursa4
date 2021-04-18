@@ -161,10 +161,10 @@ namespace Video_Player_Remake
         {
             OpenFileDialog openFileDialog = new OpenFileDialog()
             {
-                Filter = "Media (mp4, mp3, mpg, mpeg)|*.mp4;*.mp3;*.mpg;*.mpeg;",
+                Filter = "Media |*.mp4;*.mp3;*.mpg;*.mpeg;*.avi;*.wav;*.wma",
                 Title = "Choose media file"
             };
-            if (openFileDialog.ShowDialog() == true)
+            if (openFileDialog.ShowDialog() == true && openFileDialog.FileName != "")
             {
                 try
                 {
