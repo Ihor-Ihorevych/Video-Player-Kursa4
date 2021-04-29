@@ -12,3 +12,17 @@ C:\Users\volos\Desktop\Video-Player-Kursa4-main\Video Player Remake\obj\Release\
 C:\Users\volos\Desktop\Video-Player-Kursa4-main\Video Player Remake\obj\Release\Video Player Remake.exe
 C:\Users\volos\Desktop\Video-Player-Kursa4-main\Video Player Remake\obj\Release\Video Player Remake.pdb
 C:\Users\volos\Desktop\Video-Player-Kursa4-main\Video Player Remake\obj\Release\Media Player.csprojAssemblyReference.cache
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\bin\Release\Video Player Remake.exe.config
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\bin\Release\Video Player Remake.exe
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\bin\Release\Video Player Remake.pdb
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\obj\Release\Media Player.csprojAssemblyReference.cache
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\obj\Release\Models\View.baml
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\obj\Release\Models\View.g.cs
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\obj\Release\App.g.cs
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\obj\Release\Video Player Remake_MarkupCompile.cache
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\obj\Release\Video Player Remake.g.resources
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\obj\Release\Video_Player_Remake.Properties.Resources.resources
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\obj\Release\Media Player.csproj.GenerateResource.cache
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\obj\Release\Media Player.csproj.CoreCompileInputs.cache
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\obj\Release\Video Player Remake.exe
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\obj\Release\Video Player Remake.pdb
