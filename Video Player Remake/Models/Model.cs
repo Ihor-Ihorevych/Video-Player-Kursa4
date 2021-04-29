@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-namespace Video_Player_Remake
+namespace Media_Player_Remake
 {
     class Model : INotifyPropertyChanged
     {
@@ -44,12 +44,14 @@ namespace Video_Player_Remake
         public string FileName
         {
             get => _fileName;
-            set {
+            set 
+            {
                 _fileName = value;
                 OnPropertyChanged(nameof(FileName));
             }
         }
-        public double Volume {
+        public double Volume 
+        {
             get => Math.Round(_volume);
             set
             {
@@ -74,7 +76,12 @@ namespace Video_Player_Remake
             {
                 _isPlaying = value;
                 OnPropertyChanged(nameof(isPlaying));
+                OnPropertyChanged(nameof(isStopped));
             }
+        }
+        public bool isStopped
+        {
+            get => !isPlaying;
         }
         public bool Repeat
         {
@@ -97,7 +104,8 @@ namespace Video_Player_Remake
         public double PositionDouble
         {
             get => PositionTimeSpan.TotalSeconds;
-            set {
+            set 
+            {
                 mediaElement.Position = TimeSpan.FromSeconds(Convert.ToInt32(value));
                 PositionTimeSpan = TimeSpan.FromSeconds(Convert.ToInt32(value));
                 OnPropertyChanged(nameof(PositionDouble));
@@ -135,12 +143,9 @@ namespace Video_Player_Remake
         {
             try
             {
-                if (isPlaying)
-                {
-                    mediaElement.Pause();
-                    eventTimer.Stop();
-                    isPlaying = false;
-                }
+                mediaElement.Pause();
+                eventTimer.Stop();
+                isPlaying = false;
             }
             catch (Exception e) { throw (e); }
         }
@@ -174,21 +179,22 @@ namespace Video_Player_Remake
                     mediaElement.Source = uri;
                     Play();
                 }
-                catch (Exception e) {
-                    throw (e);
-                }
+                catch (Exception e) { throw (e); }
             }
         }
         private void Max_Len(object source, EventArgs e) {
-            if (mediaElement.NaturalDuration.HasTimeSpan) MaxLen = mediaElement.NaturalDuration.TimeSpan.TotalSeconds;
+            if (mediaElement.NaturalDuration.HasTimeSpan) 
+            {
+                MaxLen = mediaElement.NaturalDuration.TimeSpan.TotalSeconds;
+            } 
         }
         private void Is_Not_Playing(object source, EventArgs e) {
             Stop();
+            Console.WriteLine("End");
             if (Repeat) Play();
         }
-      
         public void OnPropertyChanged([CallerMemberName] string prop = "") {
-            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
         #endregion
     }

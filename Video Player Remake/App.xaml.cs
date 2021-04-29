@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Video_Player_Remake
+namespace Media_Player_Remake
 {
     /// <summary>
     /// Логика взаимодействия для App.xaml

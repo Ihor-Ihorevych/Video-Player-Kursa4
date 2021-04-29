@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Video_Player_Remake.Commands
+namespace Media_Player_Remake.Commands
 {
     class RelayCommand : ICommand
     {
