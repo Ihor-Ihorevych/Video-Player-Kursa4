@@ -182,18 +182,17 @@ namespace Media_Player_Remake
                 catch (Exception e) { throw (e); }
             }
         }
-        private void Max_Len(object source, EventArgs e) {
+        private protected void Max_Len(object source, EventArgs e) {
             if (mediaElement.NaturalDuration.HasTimeSpan) 
             {
                 MaxLen = mediaElement.NaturalDuration.TimeSpan.TotalSeconds;
             } 
         }
-        private void Is_Not_Playing(object source, EventArgs e) {
+        private protected void Is_Not_Playing(object source, EventArgs e) {
             Stop();
-            Console.WriteLine("End");
             if (Repeat) Play();
         }
-        public void OnPropertyChanged([CallerMemberName] string prop = "") {
+        private protected void OnPropertyChanged([CallerMemberName] string prop = "") {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
         #endregion
