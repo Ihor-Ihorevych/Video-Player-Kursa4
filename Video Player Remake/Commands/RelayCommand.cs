@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Media_Player_Remake.Commands
 {
-    class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         private Action<object> execute;
         private Func<object, bool> canExecute;

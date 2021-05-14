@@ -166,7 +166,7 @@ namespace Media_Player_Remake
         {
             OpenFileDialog openFileDialog = new OpenFileDialog()
             {
-                Filter = "Media |*.mp4;*.mp3;*.mpg;*.mpeg;*.avi;*.wav;*.wma",
+                Filter = "Media |*.mp4;*.mp3;*.mpg;*.mpeg;*.avi;*.wav;*.wma; *.mkv",
                 Title = "Choose media file"
             };
             if (openFileDialog.ShowDialog() == true && openFileDialog.FileName != "")
@@ -174,9 +174,8 @@ namespace Media_Player_Remake
                 try
                 {
                     isPlaying = false;
-                    var uri = new Uri(openFileDialog.FileName);
                     FileName = openFileDialog.SafeFileName;
-                    mediaElement.Source = uri;
+                    mediaElement.Source = new Uri(openFileDialog.FileName);
                     Play();
                 }
                 catch (Exception e) { throw (e); }

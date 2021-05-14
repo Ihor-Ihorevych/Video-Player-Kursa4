@@ -4,7 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="{Binding Player.FileName}" Height="650" Width="900" MinWidth="600" MinHeight="350" Icon="ico.ico">
+        Title="{Binding Player.FileName}" 
+        WindowState="{Binding FullScreen, Mode=OneWay}"
+        WindowStyle="{Binding Borders, Mode=OneWay}" 
+        Height="650" Width="900" MinWidth="600" 
+        MinHeight="350" Icon="/Images/ico.ico">
     <Grid Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -13,36 +17,41 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0">
             <DockPanel.Resources>
+                <Style TargetType="{x:Type Image}">
+                    <Setter Property="Height" Value="18"/>
+                </Style>
                 <Style TargetType="{x:Type DockPanel}">
                     <Setter Property="LastChildFill" Value="False"/>
                     <Setter Property="Background" Value="{Binding PrimaryColor}"/>
                     <Setter Property="Opacity" Value="{Binding Opacity}"/>
                 </Style>
                 <Style TargetType="{x:Type Button}">
-                    <Setter Property="Foreground" Value="White"/>
                     <Setter Property="Margin" Value="3,3,0,3"/>
-                    <Setter Property="Background" Value="RoyalBlue"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
                 </Style>
                 <Style TargetType="{x:Type ToggleButton}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
                     <Setter Property="FontFamily" Value="Comic Sans MS"/>
-                    <Setter Property="Background" Value="RoyalBlue"/>
-                    <Setter Property="Foreground" Value="White"/>
                     <Setter Property="Margin" Value="3,3,0,3"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Background" Value="Green"/>
-                        </Trigger>
-                    </Style.Triggers>
                 </Style>
             </DockPanel.Resources>
-            
-            <Button Content="Open file" Command="{Binding OpenFile}" CommandParameter="{Binding Player}"/>
-            <ToggleButton Content="Repeat" IsChecked="{Binding Player.Repeat}"/>
-            <ToggleButton Content="Dark mode" IsChecked="{Binding DarkMode}"/>
+            <Button Command="{Binding OpenFile}" CommandParameter="{Binding Player}">
+                <Image Height="15" Source="/Images/folder.png"/>
+            </Button>
+            <ToggleButton IsChecked="{Binding Player.Repeat}">
+                <Image Height="15" Source="/Images/repeat.png"/>
+            </ToggleButton>
+            <ToggleButton IsChecked="{Binding DarkMode}">
+                <Image Height="15" Source="/Images/dark.png"/>
+            </ToggleButton>
+            <Button Command="{Binding FullScreenSet}" CommandParameter="{Binding Player}">
+                <Image Height="15" Source="/Images/fullscreen.png"/>
+            </Button>
+            <Button Visibility="Hidden" Content="Color" Command="{Binding ColorPicker}"/> <!-- unused-->
         </DockPanel>
-        
         <MediaElement x:Name="medieElement" Height="Auto" Grid.Row="1" />
-        
         <DockPanel>
             <DockPanel.Resources>
                 <Style TargetType="{x:Type DockPanel}">
@@ -53,10 +62,8 @@
                     <Setter Property="Opacity" Value="{Binding Opacity}"/>
                 </Style>
                 <Style TargetType="{x:Type Button}">
-                    <Setter Property="FontFamily" Value="Comic Sans MS"/>
                     <Setter Property="Margin" Value="7"/>
-                    <Setter Property="Background" Value="RoyalBlue"/>
-                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="{Binding ButtonColor}"/>
                     <Setter Property="BorderThickness" Value="0"/>
                     <Setter Property="Width" Value="50"/>
                     <Setter Property="Height" Value="25"/>
@@ -65,24 +72,30 @@
                     <Setter Property="Margin" Value="10"/>
                     <Setter Property="VerticalAlignment" Value="Center"/>
                 </Style>
+                <Style TargetType="{x:Type Image}">
+                    <Setter Property="Height" Value="20"/>
+                </Style>
                 <Style TargetType="{x:Type Label}">
                     <Setter Property="Foreground" Value="{Binding PrimaryTextColor}"/>
-                    <Setter Property="FontFamily" Value="Comic Sans MS"/>
                     <Setter Property="Margin" Value="5"/>
-                    <Setter Property="MinWidth" Value="35"/>
                     <Setter Property="Width" Value="Auto"/>
                     <Setter Property="VerticalAlignment" Value="Center"/>
                 </Style>
             </DockPanel.Resources>
-            
-            <Button IsEnabled="{Binding Player.isStopped}" Command="{Binding Play}" CommandParameter="{Binding Player}" Content="Play"/>
-            <Button IsEnabled="{Binding Player.isPlaying}" Command="{Binding Pause}" CommandParameter="{Binding Player}" Content="Pause"/>
-            <Button IsEnabled="{Binding Player.isPlaying}" Command="{Binding Stop}" CommandParameter="{Binding Player}" Content="Stop"/>
-            <Label Content="{Binding Player.Volume}"/>
+            <Button IsEnabled="{Binding Player.isStopped}" Command="{Binding Play}" CommandParameter="{Binding Player}">
+                <Image Source="/Images/play.png"/>
+            </Button>
+            <Button IsEnabled="{Binding Player.isPlaying}" Command="{Binding Pause}" CommandParameter="{Binding Player}">
+                <Image Source="/Images/pause.png"/>
+            </Button>
+            <Button IsEnabled="{Binding Player.isPlaying}" Command="{Binding Stop}" CommandParameter="{Binding Player}">
+                <Image Source="/Images/stop.png"/>
+            </Button>
+
+            <Label MinWidth="25" Content="{Binding Player.Volume}"/>
             <Slider Minimum="1" Maximum="100" Width="100" Value="{Binding Player.Volume, Mode=TwoWay}"/>
-            <Label Content="{Binding Player.PositionTimeSpan}"/>
+            <Label MinWidth="115" Content="{Binding Player.PositionTimeSpan}"/>
             <Slider Minimum="1" Maximum="{Binding Player.MaxLen}" Value="{Binding Player.PositionDouble}"/>
         </DockPanel>
     </Grid>
-
 </Window>
