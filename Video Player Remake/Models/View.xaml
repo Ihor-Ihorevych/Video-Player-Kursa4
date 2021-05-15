@@ -18,7 +18,8 @@
         <DockPanel Grid.Row="0">
             <DockPanel.Resources>
                 <Style TargetType="{x:Type Image}">
-                    <Setter Property="Height" Value="18"/>
+                    <Setter Property="Width" Value="30"/>
+                    <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>
                 </Style>
                 <Style TargetType="{x:Type DockPanel}">
                     <Setter Property="LastChildFill" Value="False"/>
@@ -47,9 +48,9 @@
                 <Image Height="15" Source="/Images/dark.png"/>
             </ToggleButton>
             <Button Command="{Binding FullScreenSet}" CommandParameter="{Binding Player}">
-                <Image Height="15" Source="/Images/fullscreen.png"/>
+               <Image Height="15" Source="/Images/fullscreen.png"/>
             </Button>
-            <Button Visibility="Hidden" Content="Color" Command="{Binding ColorPicker}"/> <!-- unused-->
+            <Button Visibility="Hidden" Content="Color" Command="{Binding ColorPicker}"/> <!-- unused / ain't implified -->
         </DockPanel>
         <MediaElement x:Name="medieElement" Height="Auto" Grid.Row="1" />
         <DockPanel>
@@ -69,11 +70,13 @@
                     <Setter Property="Height" Value="25"/>
                 </Style>
                 <Style TargetType="{x:Type Slider}">
+                    <Setter Property="Minimum" Value="0"/>
                     <Setter Property="Margin" Value="10"/>
                     <Setter Property="VerticalAlignment" Value="Center"/>
                 </Style>
                 <Style TargetType="{x:Type Image}">
                     <Setter Property="Height" Value="20"/>
+                    <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>
                 </Style>
                 <Style TargetType="{x:Type Label}">
                     <Setter Property="Foreground" Value="{Binding PrimaryTextColor}"/>
@@ -91,11 +94,10 @@
             <Button IsEnabled="{Binding Player.isPlaying}" Command="{Binding Stop}" CommandParameter="{Binding Player}">
                 <Image Source="/Images/stop.png"/>
             </Button>
-
             <Label MinWidth="25" Content="{Binding Player.Volume}"/>
-            <Slider Minimum="1" Maximum="100" Width="100" Value="{Binding Player.Volume, Mode=TwoWay}"/>
+            <Slider Maximum="100" Width="100" Value="{Binding Player.Volume, Mode=TwoWay}"/>
             <Label MinWidth="115" Content="{Binding Player.PositionTimeSpan}"/>
-            <Slider Minimum="1" Maximum="{Binding Player.MaxLen}" Value="{Binding Player.PositionDouble}"/>
+            <Slider Maximum="{Binding Player.MaxLen}" Value="{Binding Player.PositionDouble}"/>
         </DockPanel>
     </Grid>
 </Window>

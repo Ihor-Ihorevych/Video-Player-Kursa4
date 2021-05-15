@@ -191,9 +191,7 @@ namespace Media_Player_Remake
             Stop();
             if (Repeat) Play();
         }
-        private protected void OnPropertyChanged([CallerMemberName] string prop = "") {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
+        private protected void OnPropertyChanged([CallerMemberName] string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         #endregion
     }
 }

@@ -34,7 +34,6 @@ namespace Media_Player_Remake
             {
                 _darkMode = value;
                 OnPropertyChanged(nameof(DarkMode));
-
                 Save_Settings();
                 Update_Props();
             }
@@ -113,7 +112,8 @@ namespace Media_Player_Remake
         {
             get
             {
-                return openFile ?? (openFile = new Commands.RelayCommand(player => {
+                return openFile ?? (openFile = new Commands.RelayCommand(player =>
+                {
                     (player as Model).OpenFile();
                 }));
             }
@@ -123,30 +123,32 @@ namespace Media_Player_Remake
         {
             get
             {
-                return colorPicker ?? (colorPicker = new Commands.RelayCommand(obj => {
+                return colorPicker ?? (colorPicker = new Commands.RelayCommand(obj =>
+                {
                     var settings = new ColorPicker();
-                    if(settings.ShowDialog() == true)
+                    if (settings.ShowDialog() == true)
                     {
-                        
+
                     }
                     Save_Settings();
                     Update_Props();
-            }));
+                }));
 
-        }
+            }
         }
         private Commands.RelayCommand fullscreen;
         public Commands.RelayCommand FullScreenSet
         {
             get
             {
-                return fullscreen ?? (fullscreen = new Commands.RelayCommand(obj => {
+                return fullscreen ?? (fullscreen = new Commands.RelayCommand(obj =>
+                {
                     _fullScreen = !_fullScreen;
                     Update_Props();
                 }));
             }
         }
-        
+
         #endregion
         #region Methods
         private void Save_Settings()
@@ -173,14 +175,18 @@ namespace Media_Player_Remake
         }
         private void Update_Props()
         {
-            foreach (var prop in new string[] { "PrimaryColor", "PrimaryTextColor", "Opacity", "FullScreen", "Borders", "ButtonColor" }) OnPropertyChanged(prop);
+            foreach (var prop in new string[] {
+                "PrimaryColor",
+                "PrimaryTextColor",
+                "Opacity",
+                "FullScreen",
+                "Borders",
+                "ButtonColor"
+            }) OnPropertyChanged(prop);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
+        private protected void OnPropertyChanged([CallerMemberName] string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         #endregion
     }
 }
