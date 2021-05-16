@@ -26,5 +26,3 @@ C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\obj\Rele
 C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\obj\Release\Media Player.csproj.CoreCompileInputs.cache
 C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\obj\Release\Video Player Remake.exe
 C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\obj\Release\Video Player Remake.pdb
-C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\obj\Release\Models\ColorPicker.g.cs
-C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake\obj\Release\Models\ColorPicker.baml

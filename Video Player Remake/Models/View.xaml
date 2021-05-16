@@ -13,28 +13,28 @@
     <Window.InputBindings>
         <MouseBinding MouseAction="MiddleClick" Command="{Binding HideMouse}"/>
         <KeyBinding Key="F2" Command="{Binding Help}"/>
-        <KeyBinding Key="Home" CommandParameter="{Binding Player}" Command="{Binding HomeButton}"/>
-        <KeyBinding Key="End" CommandParameter="{Binding Player}" Command="{Binding EndButton}"/>
+        <KeyBinding Key="Home" CommandParameter="{Binding Player}" Command="{Binding JumpToStart}"/>
+        <KeyBinding Key="End" CommandParameter="{Binding Player}" Command="{Binding JumpToEnd}"/>
         <KeyBinding Key="Space" CommandParameter="{Binding Player}" Command="{Binding Play}"/>
         <KeyBinding Key="M" Modifiers="Ctrl" CommandParameter="{Binding Player}" Command="{Binding Mute}"/>
         <KeyBinding Key="S" Modifiers="Ctrl" CommandParameter="{Binding Player}" Command="{Binding Stop}"/>
         <KeyBinding Key="O" Modifiers="Ctrl" CommandParameter="{Binding Player}" Command="{Binding OpenFile}"/>
         <KeyBinding Key="R" Modifiers="Ctrl" CommandParameter="{Binding Player}" Command="{Binding Repeat}"/>
-        <KeyBinding Key="F" Command="{Binding FullScreenSet}"/>
-        <KeyBinding Key="H" Modifiers="Ctrl" Command="{Binding HidePanel}"/>
-        <KeyBinding Key="F11" Command="{Binding FullScreenSet}"/>
+        <KeyBinding Key="F" Command="{Binding ToggleFullScreen}"/>
+        <KeyBinding Key="F11" Command="{Binding ToggleFullScreen}"/>
+        <KeyBinding Key="H" Modifiers="Ctrl" Command="{Binding HideControlPanel}"/>
         <KeyBinding Key="Left" Command="{Binding ChangePos}" CommandParameter="-1"/>
         <KeyBinding Key="Right" Command="{Binding ChangePos}" CommandParameter="1"/>
         <KeyBinding Key="Up" Command="{Binding ChangePos}" CommandParameter="5"/>
         <KeyBinding Key="Down" Command="{Binding ChangePos}" CommandParameter="-5"/>
-        <KeyBinding Key="D" Modifiers="Ctrl" Command="{Binding SetDark}"/>
+        <KeyBinding Key="D" Modifiers="Ctrl" Command="{Binding SwapDark}"/>
     </Window.InputBindings>
     <Grid Background="Black">
         <Grid.RowDefinitions>
-            <RowDefinition Height="{Binding PanelHidden}"/>
+            <RowDefinition Height="{Binding DefaultRowHeight}"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="{Binding PanelHidden}"/>
-            <RowDefinition Height="{Binding PanelHiddenShow}"/>
+            <RowDefinition Height="{Binding DefaultRowHeight}"/>
+            <RowDefinition Height="{Binding AdditionalRowHeight}"/>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0">
             <DockPanel.Resources>
@@ -45,7 +45,7 @@
                 <Style TargetType="{x:Type DockPanel}">
                     <Setter Property="Visibility" Value="{Binding DockPanelVisibility}"/>
                     <Setter Property="LastChildFill" Value="False"/>
-                    <Setter Property="Background" Value="{Binding PrimaryColor}"/>
+                    <Setter Property="Background" Value="{Binding PrimaryDockPanelColor}"/>
                     <Setter Property="Opacity" Value="{Binding DockPanelOpacity}"/>
                 </Style>
                 <Style TargetType="{x:Type Button}">
@@ -83,13 +83,13 @@
                     <ToolTip>CTRL+D</ToolTip>
                 </ToggleButton.ToolTip>
             </ToggleButton>
-            <Button Command="{Binding FullScreenSet}" CommandParameter="{Binding Player}">
+            <Button Command="{Binding ToggleFullScreen}">
                 <Image Height="15" Source="/Images/fullscreen.png"/>
                 <Button.ToolTip>
                     <ToolTip>F</ToolTip>
                 </Button.ToolTip>
             </Button>
-            <Button Command="{Binding HidePanel}">
+            <Button Command="{Binding HideControlPanel}">
                 <Image Height="15" Source="/Images/hidePanel.png"/>
                 <Button.ToolTip>
                     <ToolTip>CTRL+H</ToolTip>
@@ -105,7 +105,7 @@
         <MediaElement ToolTipService.InitialShowDelay="1000" ToolTipService.ShowDuration="1000" x:Name="mediaElement" Height="Auto" Grid.Row="1">
             <MediaElement.InputBindings>
                 <MouseBinding MouseAction="RightClick" Command="{Binding Play}" CommandParameter="{Binding Player}"/>
-                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding FullScreenSet}"/>
+                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding ToggleFullScreen}"/>
                 <MouseBinding MouseAction="RightDoubleClick" CommandParameter="{Binding Player}" Command="{Binding OpenFile}"/>
             </MediaElement.InputBindings>
             <MediaElement.ToolTip>
@@ -122,7 +122,7 @@
             <DockPanel.Resources>
                 <Style TargetType="{x:Type DockPanel}">
                     <Setter Property="Visibility" Value="{Binding DockPanelVisibility}"/>
-                    <Setter Property="Background" Value="{Binding PrimaryColor}"/>
+                    <Setter Property="Background" Value="{Binding PrimaryDockPanelColor}"/>
                     <Setter Property="HorizontalAlignment" Value="Stretch"/>
                     <Setter Property="VerticalAlignment" Value="Bottom"/>
                     <Setter Property="Grid.Row" Value="2"/>
@@ -132,7 +132,7 @@
                     <Setter Property="ToolTipService.ShowDuration" Value="1500"/>
                     <Setter Property="Focusable" Value="False"/>
                     <Setter Property="Margin" Value="0,0,7,0"/>
-                    <Setter Property="Background" Value="{Binding ButtonColor}"/>
+                    <Setter Property="Background" Value="{Binding ButtonsColor}"/>
                     <Setter Property="BorderThickness" Value="0"/>
                     <Setter Property="Width" Value="50"/>
                     <Setter Property="Height" Value="25"/>
@@ -148,7 +148,7 @@
                     <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>
                 </Style>
                 <Style TargetType="{x:Type Label}">
-                    <Setter Property="Foreground" Value="{Binding PrimaryTextColor}"/>
+                    <Setter Property="Foreground" Value="{Binding PrimaryForegroundColor}"/>
                     <Setter Property="Margin" Value="5"/>
                     <Setter Property="Width" Value="Auto"/>
                     <Setter Property="VerticalAlignment" Value="Center"/>
@@ -185,7 +185,7 @@
             <Label MinWidth="115" Content="{Binding Player.PositionTimeSpan}"/>
             <Slider Maximum="{Binding Player.MaxLen}" Value="{Binding Player.PositionDouble}"/>
         </DockPanel>
-        <Button Focusable="False" HorizontalAlignment="Left" Opacity="{Binding RestoreButtonOpacity}" VerticalAlignment="Bottom" Margin="5,0" Grid.Row="3" Command="{Binding HidePanel}">
+        <Button Focusable="False" HorizontalAlignment="Left" Opacity="{Binding RestoreButtonOpacity}" VerticalAlignment="Bottom" Margin="5,0" Grid.Row="3" Command="{Binding HideControlPanel}">
             <Image Height="8" Source="/Images/hidePanel.png"/>
             <Button.ToolTip>
                 <ToolTip>CTRL+H</ToolTip>
