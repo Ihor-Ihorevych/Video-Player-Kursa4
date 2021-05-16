@@ -7,7 +7,7 @@ namespace Media_Player_Remake
         public View()
         {
             InitializeComponent();
-            DataContext = new ViewModel(medieElement);
+            DataContext = new ViewModel(mediaElement);
         }
     }
 }

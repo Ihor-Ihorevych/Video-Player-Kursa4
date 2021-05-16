@@ -159,13 +159,26 @@
     <Resource Include="Images\repeat.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\play.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\pause.png" />
+    <Resource Include="Images\dblClick.png" />
+    <Resource Include="Images\rmbClick.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\stop.png" />
+    <Resource Include="Images\space.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\middleClick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\hidePanel.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
