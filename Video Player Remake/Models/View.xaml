@@ -106,6 +106,7 @@
             <MediaElement.InputBindings>
                 <MouseBinding MouseAction="RightClick" Command="{Binding Play}" CommandParameter="{Binding Player}"/>
                 <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding FullScreenSet}"/>
+                <MouseBinding MouseAction="RightDoubleClick" CommandParameter="{Binding Player}" Command="{Binding OpenFile}"/>
             </MediaElement.InputBindings>
             <MediaElement.ToolTip>
                 <ToolTip>
@@ -184,8 +185,8 @@
             <Label MinWidth="115" Content="{Binding Player.PositionTimeSpan}"/>
             <Slider Maximum="{Binding Player.MaxLen}" Value="{Binding Player.PositionDouble}"/>
         </DockPanel>
-        <Button HorizontalAlignment="Left" Opacity="{Binding RestoreButtonOpacity}" VerticalAlignment="Bottom" Margin="5,0" Grid.Row="3" Command="{Binding HidePanel}">
-            <Image Height="10" Source="/Images/hidePanel.png"/>
+        <Button Focusable="False" HorizontalAlignment="Left" Opacity="{Binding RestoreButtonOpacity}" VerticalAlignment="Bottom" Margin="5,0" Grid.Row="3" Command="{Binding HidePanel}">
+            <Image Height="8" Source="/Images/hidePanel.png"/>
             <Button.ToolTip>
                 <ToolTip>CTRL+H</ToolTip>
             </Button.ToolTip>

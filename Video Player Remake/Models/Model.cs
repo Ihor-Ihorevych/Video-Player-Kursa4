@@ -15,10 +15,9 @@ namespace Media_Player_Remake
         #region Fields
         private protected MediaElement mediaElement;
         private protected string _fileName;
-        private protected double _volume, _maxLenght;
+        private protected double _volume, _maxLenght, _lastVolume;
         private protected bool _isPlaying, _repeat, _isMuted = false;
         private protected TimeSpan _playerPositionSpan;
-        private protected double _lastVolume;
         private protected Timer eventTimer;
         private protected Action _setText;
         private protected List<string> _timeProps = new List<string>() { nameof(PositionTimeSpan), nameof(PositionDouble) };
@@ -35,7 +34,7 @@ namespace Media_Player_Remake
                 mediaElement.MediaOpened += Max_Len;
                 mediaElement.MediaEnded += Is_Not_Playing;
                 mediaElement.Volume = _volume;
-                eventTimer = new Timer { Interval = 33, Enabled = false };
+                eventTimer = new Timer { Interval = 150, Enabled = false };
                 eventTimer.Elapsed += Update_Position;
             }
             catch (Exception er) { throw er; }
@@ -113,7 +112,7 @@ namespace Media_Player_Remake
             }
             catch (Exception) { Application.Current.Shutdown(); }
         }
-        private protected void Update_Props(List<string> props) => props.ForEach(prop => OnPropertyChanged(prop));
+        private protected void Update_Props(List<string> props) => props.ForEach(x => OnPropertyChanged(x));
         private protected void Max_Len(object source, EventArgs e) { if (mediaElement.NaturalDuration.HasTimeSpan) MaxLen = mediaElement.NaturalDuration.TimeSpan.TotalSeconds; }
         private protected void Is_Not_Playing(object source, EventArgs e) { Stop(); if (Repeat) Play(); }
         public event PropertyChangedEventHandler PropertyChanged;

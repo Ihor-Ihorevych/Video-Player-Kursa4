@@ -14,8 +14,20 @@ namespace Media_Player_Remake
     {
         public ViewModel(MediaElement e) { Player = new Model(e) { Volume = 75, FileName = "No File" }; Load_Settings(); }
         #region Fields
-        private protected List<string> _emojis = new List<string>() { "F/F11 - 📺", "", "Ctrl+D - 🌙", "Ctrl+O - 📂", "Ctrl+R - 🔁", "Ctrl+S - ⏹️", "Ctrl+M/🖱 - 🔇", "CTRL+H - ⛔", "", "Spacebar/🖱- 🎬", "Home/End - 🎬", "↕️↔️ - 🎬" },
-            _getprops = new List<string>() { nameof(PrimaryColor), nameof(PrimaryTextColor), nameof(DockPanelOpacity), nameof(DarkMode), nameof(FullScreen), nameof(WindowBorders), nameof(ButtonColor), nameof(Cursor), nameof(DockPanelVisibility), nameof(PanelHidden), nameof(PanelHiddenShow), nameof(RestoreButtonOpacity) };
+        private protected List<string> _emojis = new List<string>() { "F/F11 - 📺", "", "Ctrl+D - 🌙", "Ctrl+O - 📂", "Ctrl+R - 🔁", "Ctrl+S - ⏹️", "Ctrl+M/🖱 - 🔇", "Ctrl+H - ⛔", "", "Spacebar/🖱- 🎬", "Home/End - 🎬", "↕️↔️ - 🎬" },
+            _getprops = new List<string>() {
+                nameof(PrimaryColor),
+                nameof(PrimaryTextColor),
+                nameof(DockPanelOpacity),
+                nameof(DarkMode),
+                nameof(FullScreen),
+                nameof(WindowBorders),
+                nameof(ButtonColor),
+                nameof(Cursor),
+                nameof(DockPanelVisibility),
+                nameof(PanelHidden),
+                nameof(PanelHiddenShow),
+                nameof(RestoreButtonOpacity) };
         private protected bool _darkMode, _fullScreen, _cursorHidden, _panelHidden;
         private protected BrushConverter _converter = new BrushConverter();
         private protected Brush _darkColor = Brushes.Black,
@@ -52,7 +64,7 @@ namespace Media_Player_Remake
         public Commands.RelayCommand HideMouse => hidemouse ?? (hidemouse = new Commands.RelayCommand(obj => { _cursorHidden = !_cursorHidden; Update_Props(_getprops); }));
         public Commands.RelayCommand HomeButton => homeBtn ?? (homeBtn = new Commands.RelayCommand(player => (player as Model).PositionDouble = 0));
         public Commands.RelayCommand EndButton => endBtn ?? (endBtn = new Commands.RelayCommand(player => (player as Model).PositionDouble = (player as Model).MaxLen));
-        public Commands.RelayCommand Mute => mute ?? (mute = new Commands.RelayCommand(player => { (player as Model).Mute(); }));
+        public Commands.RelayCommand Mute => mute ?? (mute = new Commands.RelayCommand(player => (player as Model).Mute()));
         public Commands.RelayCommand HidePanel => hidepanel ?? (hidepanel = new Commands.RelayCommand(obj => { _panelHidden = !_panelHidden; Save_Settings(); Update_Props(_getprops); }));
         public Commands.RelayCommand ChangePos => jumppos ?? (jumppos = new Commands.RelayCommand(obj => { Player.ChangePosition(TimeSpan.FromSeconds(Int32.Parse(obj.ToString()))); }));
         #endregion
