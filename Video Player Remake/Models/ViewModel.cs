@@ -14,7 +14,7 @@ namespace Media_Player_Remake
     {
         public ViewModel(MediaElement e) { Player = new Model(e) { Volume = 75, FileName = "No File" }; Load_Settings(); }
         #region Fields
-        private protected List<string> _emojis = new List<string>() { "F/F11 - 📺", "", "Ctrl+D - 🌙", "Ctrl+O - 📂", "Ctrl+R - 🔁", "Ctrl+S - ⏹️", "Ctrl+M/🖱 - 🔇", "Ctrl+H - ⛔", "", "Spacebar/🖱- 🎬", "Home/End - 🎬", "↕️↔️ - 🎬" },
+        private protected List<string> _emojis = new List<string>() { "F/F11 - 📺", "", "Ctrl+D - 🌙", "Ctrl+O - 📂", "Ctrl+R - 🔁", "Ctrl+S - ⏹️", "Ctrl+M/🖱 - 🔇", "Ctrl+H - ⛔", "", "Spacebar/🖱- 🎬", "Home/End - 🎬", "↕️↔️ - 🎬", "🖱📜 - 🖱⛔" },
             _getprops = new List<string>() {
                 nameof(PrimaryColor),
                 nameof(PrimaryTextColor),

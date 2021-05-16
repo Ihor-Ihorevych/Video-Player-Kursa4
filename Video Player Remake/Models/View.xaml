@@ -191,6 +191,5 @@
                 <ToolTip>CTRL+H</ToolTip>
             </Button.ToolTip>
         </Button>
-
     </Grid>
 </Window>
