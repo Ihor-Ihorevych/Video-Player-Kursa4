@@ -40,6 +40,7 @@
             <DockPanel.Resources>
                 <Style TargetType="{x:Type Image}">
                     <Setter Property="Width" Value="30"/>
+                    <Setter Property="Height" Value="15"/>
                     <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>
                 </Style>
                 <Style TargetType="{x:Type DockPanel}">
@@ -66,37 +67,37 @@
                 </Style>
             </DockPanel.Resources>
             <Button Command="{Binding OpenFile}" CommandParameter="{Binding Player}">
-                <Image Height="15" Source="/Images/folder.png"/>
+                <Image Source="/Images/folder.png"/>
                 <Button.ToolTip>
                     <ToolTip>CTRL+O</ToolTip>
                 </Button.ToolTip>
             </Button>
             <ToggleButton IsChecked="{Binding Player.Repeat}">
-                <Image Height="15" Source="/Images/repeat.png"/>
+                <Image Source="/Images/repeat.png"/>
                 <ToggleButton.ToolTip>
                     <ToolTip>CTRL+R</ToolTip>
                 </ToggleButton.ToolTip>
             </ToggleButton>
             <ToggleButton IsChecked="{Binding DarkMode}">
-                <Image Height="15" Source="/Images/dark.png"/>
+                <Image Source="/Images/dark.png"/>
                 <ToggleButton.ToolTip>
                     <ToolTip>CTRL+D</ToolTip>
                 </ToggleButton.ToolTip>
             </ToggleButton>
             <Button Command="{Binding ToggleFullScreen}">
-                <Image Height="15" Source="/Images/fullscreen.png"/>
+                <Image Source="/Images/fullscreen.png"/>
                 <Button.ToolTip>
                     <ToolTip>F</ToolTip>
                 </Button.ToolTip>
             </Button>
             <Button Command="{Binding HideControlPanel}">
-                <Image Height="15" Source="/Images/hidePanel.png"/>
+                <Image Source="/Images/hidePanel.png"/>
                 <Button.ToolTip>
                     <ToolTip>CTRL+H</ToolTip>
                 </Button.ToolTip>
             </Button>
             <Button Command="{Binding Help}">
-                <Image Height="15" Source="/Images/question.png"/>
+                <Image Source="/Images/question.png"/>
                 <Button.ToolTip>
                     <ToolTip>F2</ToolTip>
                 </Button.ToolTip>
