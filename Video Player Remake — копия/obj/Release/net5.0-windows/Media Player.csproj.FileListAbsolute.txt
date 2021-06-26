@@ -1,0 +1,10 @@
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake — копия\obj\Release\net5.0-windows\Media Player.csproj.AssemblyReference.cache
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake — копия\obj\Release\net5.0-windows\App.g.cs
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake — копия\obj\Release\net5.0-windows\Video Player Remake_MarkupCompile.cache
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake — копия\obj\Release\net5.0-windows\Models\View.baml
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake — копия\obj\Release\net5.0-windows\Models\View.g.cs
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake — копия\obj\Release\net5.0-windows\Video Player Remake.g.resources
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake — копия\obj\Release\net5.0-windows\Video_Player_Remake.Properties.Resources.resources
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake — копия\obj\Release\net5.0-windows\Media Player.csproj.GenerateResource.cache
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake — копия\obj\Release\net5.0-windows\Media Player.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\volos\Documents\GitHub\Video-Player-Kursa4\Video Player Remake — копия\obj\Release\net5.0-windows\Media Player.csproj.CoreCompileInputs.cache

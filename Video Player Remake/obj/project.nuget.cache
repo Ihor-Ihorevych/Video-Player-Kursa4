@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "JdhZy4uRLDMisCTTBgs2gx+C9m8J8JeLIgJSpvTKRo9WekMHWvO9q4bolbK/KuUg9ht8UW5/ssabKUn8HUft4Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\volos\\Documents\\GitHub\\Video-Player-Kursa4\\Video Player Remake — копия (2)\\Media Player.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\volos\\.nuget\\packages\\fody\\6.5.1\\fody.6.5.1.nupkg.sha512",
+    "C:\\Users\\volos\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\volos\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.31\\microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512",
+    "C:\\Users\\volos\\.nuget\\packages\\propertychanged.fody\\3.4.0\\propertychanged.fody.3.4.0.nupkg.sha512",
+    "C:\\Users\\volos\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
